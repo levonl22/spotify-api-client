@@ -21,8 +21,9 @@ public class SpotifyTester
 		playlist1.playPlaylist();
 		System.out.println(playlist1.getSongs());
 		*/
-		SpotifyAPIClient spotifyClient = new SpotifyAPIClient("BQBoNuXKPurcnls978R2HBG5vouStr5cjwJfeRJ-mldO34A3fRJwbMLI9iZFh_dGpGbwX0ZrLU6qETZF3EbE7Vu4vDInkFn3QeBUivYJ883jd4qPrUZ1Q5JwX7GXFfcY1SLlNNhPLbo");
-		//BQBoNuXKPurcnls978R2HBG5vouStr5cjwJfeRJ-mldO34A3fRJwbMLI9iZFh_dGpGbwX0ZrLU6qETZF3EbE7Vu4vDInkFn3QeBUivYJ883jd4qPrUZ1Q5JwX7GXFfcY1SLlNNhPLbo
+		SpotifyAPIClient spotifyClient = new SpotifyAPIClient("BQDq0xeIJfE5I65MA1Q2vKNYxIVNsUayXyGSPmG80hAVfBwAZ3VSFjsyxIZgpI1wwdgIu12MVaEE9hV-tk3ocKLOFh6fN7iaSxi4HrrqxzhyGzIEI0qhuEMiAVUNsSZJPZ14GkI5HjM");
+		//BQDq0xeIJfE5I65MA1Q2vKNYxIVNsUayXyGSPmG80hAVfBwAZ3VSFjsyxIZgpI1wwdgIu12MVaEE9hV-tk3ocKLOFh6fN7iaSxi4HrrqxzhyGzIEI0qhuEMiAVUNsSZJPZ14GkI5HjM
+
 		List<Song> results = spotifyClient.searchTracks("Help herself", 5);
 		for (Song s : results) {
 		    System.out.println(s);
