@@ -6,22 +6,7 @@ public class SpotifyTester
 {
 	public static void main(String[] args) throws Exception{
 		
-		
-		//BQDZEZJW1_0izN96vu_YM1Z3oxlKVYnk0PicUU-aZm6zTanx4WViTmh2pu4Jbtf3SlyJs4umwTEnb_g1pyhTamX5aewNWX3jqbFOOGbLJebVM_COI0q2oguq2WoL22FxEuDStMeWg3M
-
-		/*List<Song> results = spotifyClient.searchTracks("Help herself", 1);
-		for (Song s : results) {
-		    System.out.println(s);
-		}
-		
-		System.out.println("\n");
-		
-		List<Artist> artists = spotifyClient.searchArtist("Chungha", 1);
-		for (Artist a : artists) {
-			System.out.println(a);
-		}
-		*/
-		SpotifyAPIClient spotifyClient = new SpotifyAPIClient("BQB4v6SP_irZ6SfmSzuUt4n8FKn4YRBbNe_9_BjBklTaqXzCVJ1bcmiWf4C0pYyDkdyu4sjyNWUIjyG2JuZKuTtP6hiXVIlX_2FKQ22N44w0ZUxMMaDkRh_wU8_cv1yq7VMBHWaY_D8");
+		SpotifyAPIClient spotifyClient = new SpotifyAPIClient("BQD3_ROKwdm_6JVOS93P-n8leVF2fwN79eWldqqNHoEN5FUE7m81cxxHiLDDlyIvSVeW-4clZgIISndY6L7I3zsPEDEJMPV_cxSHoTBz9gNzzUZO5nv0XOEsCKkgcqIRJ_AjCzZbYcU");
 		
 		Scanner input = new Scanner(System.in);
 		System.out.println("Welcome to the Spotify Search Client by Levon Lau");
@@ -40,6 +25,7 @@ public class SpotifyTester
 			if (userInput.equals("1")) {
 				System.out.println("Enter song title: ");
 				songsResults = spotifyClient.searchTracks(input.nextLine(), 10);
+				System.out.println("\nHere are your results:");
 				for (int i = 0; i < songsResults.size(); i++) {
 					System.out.print((i + 1) + ". " + songsResults.get(i) + "\n");
 				}

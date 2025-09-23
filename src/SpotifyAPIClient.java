@@ -31,7 +31,7 @@ public class SpotifyAPIClient
 	public List<Artist> searchArtists(String query, int limit) throws Exception {
 		String url = buildSearchUrl(query, "artist", limit);
 		String json = HttpUtils.get(url, accessToken);
-		System.out.println("RAW JSON response: \n" + json);
+		//System.out.println("RAW JSON response: \n" + json);
 		
 		JsonObject obj = JsonParser.parseString(json).getAsJsonObject();
 		JsonObject artistsObj = obj.getAsJsonObject("artists");
@@ -61,7 +61,7 @@ public class SpotifyAPIClient
 	public List<Song> searchTracks(String query, int limit) throws Exception {
 		String url = buildSearchUrl(query, "track", limit);
 		String json = HttpUtils.get(url, accessToken);
-		System.out.println("RAW JSON response: \n" + json);
+		//System.out.println("RAW JSON response: \n" + json);
 		
 		JsonObject obj = JsonParser.parseString(json).getAsJsonObject();
 		JsonObject tracksObj = obj.getAsJsonObject("tracks");

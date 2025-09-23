@@ -19,7 +19,7 @@ public class HttpUtils {
 		
 		HttpResponse<String> response = CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
 		
-		System.out.println(response);
+		//System.out.println(response);
 		if (response.statusCode() != 200) {
 			throw new IOException("HTTP GET failed: " + response.statusCode() + " for URL: " + url);
 		}
