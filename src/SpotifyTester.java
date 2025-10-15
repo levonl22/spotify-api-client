@@ -1,17 +1,39 @@
 import java.util.List;
 import java.util.Scanner;
+
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import java.io.FileReader;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 public class SpotifyTester
 {
 	public static void main(String[] args) throws Exception{
 		
-		SpotifyAPIClient spotifyClient = new SpotifyAPIClient("BQD3_ROKwdm_6JVOS93P-n8leVF2fwN79eWldqqNHoEN5FUE7m81cxxHiLDDlyIvSVeW-4clZgIISndY6L7I3zsPEDEJMPV_cxSHoTBz9gNzzUZO5nv0XOEsCKkgcqIRJ_AjCzZbYcU");
+		JsonObject storedJson = JsonParser.parseReader(new FileReader("token.json")).getAsJsonObject();
+		String token = storedJson.get("access_token").getAsString();
+		long expiresAt = storedJson.get("expires_at").getAsLong();
 		
+		Instant instant = Instant.ofEpochMilli(expiresAt);
+		LocalDateTime expireTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+				
 		Scanner input = new Scanner(System.in);
 		System.out.println("Welcome to the Spotify Search Client by Levon Lau");
-		System.out.println("If you need an access token, or if your previous has expired, please enter 'token'. Otherwise, press 'Enter' to continue: ");
-		if (input.nextLine().equals("token")) spotifyClient = new SpotifyAPIClient(SpotifyClientCredentials.getAccessToken());
+		if (System.currentTimeMillis() < expiresAt) {
+			System.out.print("Your token is valid until " + expireTime);
+		}
+		else {
+			System.out.print("It seems like your token has expired. Please press 'Enter' to request a new one.");
+			if (input.nextLine().equals("")) {
+				token = SpotifyClientCredentials.getNewAccessToken();
+			}
+			
+		}
+		SpotifyAPIClient spotifyClient = new SpotifyAPIClient(token);
 		
 		
 		List<Song> songsResults = new ArrayList<>();
@@ -42,7 +64,6 @@ public class SpotifyTester
 		
 		input.close();
 		System.out.println("Thank you for using the Spotify Search Client!");
-		
 		
 	}
 	
